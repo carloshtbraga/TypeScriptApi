@@ -7,4 +7,9 @@ async function addProduct({ name, price, orderId }:Product):Promise<ServiceRespo
   return { status: 'SUCCESSFUL', data: result.dataValues };
 }
 
-export default { addProduct };
+async function getAllProducts():Promise<ServiceResponse<Product[]>> {
+  const result = await ProductModel.findAll();
+  return { status: 'SUCCESSFUL', data: result.map((e) => e.dataValues) };
+}
+
+export default { addProduct, getAllProducts };

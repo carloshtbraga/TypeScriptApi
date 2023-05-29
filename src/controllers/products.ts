@@ -7,4 +7,9 @@ async function addProduct(req: Request, res: Response):Promise<Response> {
   return res.status(201).json(data);
 }
 
-export default { addProduct };
+async function getAllProducts(req: Request, res: Response):Promise<Response> {
+  const { data } = await products.getAllProducts();
+  return res.status(200).json(data);
+}
+
+export default { addProduct, getAllProducts };
