@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { User } from 'src/types/User';
+// import { User } from 'src/types/User';
 
 const jwtsecret = process.env.JWT_SECRET || 'secret';
 
@@ -28,7 +28,7 @@ const tokenVerifier = (req: Request, res: Response, next: NextFunction):Response
     return res.status(401).json({ message: 'Token not found' });
   }
   try {
-    const payload = jwt.verify(token, jwtsecret) as User;
+    // const payload = jwt.verify(token, jwtsecret) as User;
     // req.user = payload;
     next();
   } catch (error) {
