@@ -28,11 +28,11 @@ const tokenVerifier = (req: Request, res: Response, next: NextFunction):Response
     return res.status(401).json({ message: 'Token not found' });
   }
   try {
-    // const payload = jwt.verify(token, jwtsecret) as User;
-    // req.user = payload;
+    jwt.verify(token, jwtsecret);
+        
     next();
   } catch (error) {
-    return res.status(401).json({ message: 'Expired or invalid token' });
+    return res.status(401).json({ message: 'Invalid token' });
   }
 };
 
